@@ -1,0 +1,34 @@
+[
+  {
+    "q": "How does the online price estimate work?",
+    "a": "Our project calculator uses your lawn size, mowing frequency, terrain, and any add-on services to generate an instant ballpark estimate. It's a great starting point, but we confirm exact pricing after a quick look at your property, since things like access, obstacles, and overgrowth can affect the final price."
+  },
+  {
+    "q": "What areas do you service?",
+    "a": "We're based in Springfield, MO and serve homeowners and businesses within roughly a 60-mile radius, including Ozark, Nixa, Republic, Branson, Bolivar, and dozens of other nearby towns. Check our Service Areas page for the full list, and reach out if you don't see your town — we're always adding areas."
+  },
+  {
+    "q": "Do I need to sign a contract?",
+    "a": "No long-term contracts required. You can schedule weekly, bi-weekly, monthly, or one-time service, and adjust or cancel as your needs change."
+  },
+  {
+    "q": "What if it rains on my scheduled mowing day?",
+    "a": "We'll reschedule for the next available day rather than mow a soaked lawn, which can damage grass and leave ruts. You don't need to do anything — we'll handle the rescheduling and keep you posted."
+  },
+  {
+    "q": "How do I pay for service?",
+    "a": "We offer flexible payment options, including card-on-file billing so you don't have to worry about it after each visit."
+  },
+  {
+    "q": "Do you offer one-time cleanups, or only recurring service?",
+    "a": "Both. Plenty of customers start with a one-time cleanup or single mow, and many move to a recurring schedule once they see the results. There's no pressure to commit upfront."
+  },
+  {
+    "q": "Is fertilization and weed control safe for kids and pets?",
+    "a": "We use properly timed, professionally applied treatments and can walk you through recommended re-entry times for your yard. Let us know if you have specific concerns and we'll factor that into your treatment plan."
+  },
+  {
+    "q": "How quickly can you get to a new customer?",
+    "a": "It depends on the season and our route schedule, but we move quickly to get new customers on the calendar. Reach out and we'll give you a straight answer on timing for your area."
+  }
+]

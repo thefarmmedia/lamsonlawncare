@@ -10,7 +10,7 @@ function initMobileNav() {
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  header.querySelectorAll(".main-nav > a").forEach((link) => {
+  header.querySelectorAll(".main-nav a").forEach((link) => {
     link.addEventListener("click", () => {
       header.classList.remove("nav-open");
       toggle.setAttribute("aria-expanded", "false");
