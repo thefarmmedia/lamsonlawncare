@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "mowing-edging",
+    "navLabel": "Mowing & Edging",
+    "icon": "🌱",
+    "heroTitle": "Weekly &amp; Bi-Weekly Mowing You Can Set Your Watch To",
+    "heroSubtitle": "Consistent cuts, clean edges, and a crew that shows up on schedule.",
+    "intro": "Our core service is dependable mowing on a schedule that fits your lawn — weekly, bi-weekly, or a one-time cut when you need your yard looking sharp fast. Every visit includes trimming and edging so nothing looks half-finished.",
+    "included": [
+      "Precision mowing at the right height for your grass type",
+      "String trimming around trees, fences, and garden beds",
+      "Clean-line edging along walkways, driveways, and curbs",
+      "Clippings and debris blown off hardscapes and porches",
+      "Flexible weekly, bi-weekly, or one-time scheduling"
+    ],
+    "why": [
+      "The same reliable crew and schedule every visit",
+      "Fully equipped, insured lawn care team",
+      "Instant online estimate before you ever commit"
+    ],
+    "metaDescription": "Weekly and bi-weekly mowing, trimming, and edging from Lampson Lawn Service. Serving Springfield, MO and surrounding areas. Get an instant online estimate."
+  },
+  {
+    "slug": "yard-cleanup",
+    "navLabel": "Yard Cleanup",
+    "icon": "🍂",
+    "heroTitle": "Seasonal Cleanups That Get Your Yard Back In Shape",
+    "heroSubtitle": "Leaf removal, debris hauling, and full property cleanups.",
+    "intro": "Whether it's a fall leaf pile-up, storm debris, or a yard that's been neglected for a season, our cleanup crews clear it out fast and leave your property looking cared for again.",
+    "included": [
+      "Leaf removal and hauling",
+      "Storm debris and fallen limb pickup",
+      "Flower bed clean-outs",
+      "Ground-level debris and clutter clearing",
+      "Spring and fall cleanup packages"
+    ],
+    "why": [
+      "Available as a one-time job or recurring seasonal service",
+      "Fast turnaround so your yard doesn't stay a mess",
+      "Pairs perfectly with our mowing and mulching services"
+    ],
+    "metaDescription": "Leaf removal, storm debris hauling, and seasonal yard cleanups from Lampson Lawn Service in the Springfield, MO area. Get an instant online estimate."
+  },
+  {
+    "slug": "fertilization-weed-control",
+    "navLabel": "Fertilization & Weed Control",
+    "icon": "🌾",
+    "heroTitle": "Greener Grass, Fewer Weeds",
+    "heroSubtitle": "Seasonal treatment programs built for Missouri lawns.",
+    "intro": "Healthy soil grows a healthy lawn. Our fertilization and weed control programs are timed to Missouri's growing seasons to green up your grass while keeping weeds from taking over.",
+    "included": [
+      "Seasonal fertilization applications",
+      "Pre-emergent and post-emergent weed treatments",
+      "Broadleaf weed spot-treatment",
+      "Soil-friendly, properly timed product application",
+      "Custom treatment schedules by season"
+    ],
+    "why": [
+      "Programs built around Missouri's actual growing seasons",
+      "Visible, measurable results over the season",
+      "Best results when paired with regular mowing"
+    ],
+    "metaDescription": "Seasonal fertilization and weed control programs from Lampson Lawn Service, serving Springfield, MO and the surrounding area. Get an instant online estimate."
+  },
+  {
+    "slug": "mulching-aeration",
+    "navLabel": "Mulching & Aeration",
+    "icon": "🪵",
+    "heroTitle": "Healthier Beds, Healthier Soil",
+    "heroSubtitle": "Fresh mulch installs and core aeration for a lawn that actually breathes.",
+    "intro": "Mulching keeps your beds clean and your landscaping healthy, while aeration relieves compacted soil so water, air, and nutrients can actually reach the roots. Both are easy add-ons to any mowing plan.",
+    "included": [
+      "Fresh mulch install in beds and borders",
+      "Bed edging and weed-barrier touch-up",
+      "Core aeration to relieve soil compaction",
+      "Improved water and nutrient absorption",
+      "Best paired with fertilization for maximum results"
+    ],
+    "why": [
+      "Noticeably improves curb appeal right away",
+      "Long-term lawn health, not just a quick fix",
+      "Easy to bundle with your regular mowing visit"
+    ],
+    "metaDescription": "Mulch installation and core aeration services from Lampson Lawn Service, serving Springfield, MO and surrounding towns. Get an instant online estimate."
+  }
+]
