@@ -13,6 +13,8 @@ const path = require("path");
 const ROOT = path.join(__dirname, "..");
 const towns = JSON.parse(fs.readFileSync(path.join(__dirname, "data/towns.json"), "utf8"));
 const services = JSON.parse(fs.readFileSync(path.join(__dirname, "data/services.json"), "utf8"));
+const posts = JSON.parse(fs.readFileSync(path.join(__dirname, "data/posts.json"), "utf8"));
+const faqs = JSON.parse(fs.readFileSync(path.join(__dirname, "data/faq.json"), "utf8"));
 
 const SITE_NAME = "Lampson Lawn Service";
 const PHONE = "(417) 207-1577";
@@ -114,6 +116,22 @@ function header(base) {
   const serviceLinks = services
     .map((s) => `<a href="${base}services/${s.slug}.html">${s.navLabel}</a>`)
     .join("\n        ");
+
+  const areaDirections = [...new Set(towns.map((t) => t.direction))];
+  const areaCols = areaDirections
+    .map((dir) => {
+      const links = towns
+        .filter((t) => t.direction === dir)
+        .sort((a, b) => a.miles - b.miles)
+        .map((t) => `<a href="${base}service-areas/${t.slug}.html">${t.name}, MO</a>`)
+        .join("\n            ");
+      return `<div class="mega-col">
+            <h4>${dir}</h4>
+            ${links}
+          </div>`;
+    })
+    .join("\n          ");
+
   return `<header class="site-header">
   <div class="container header-inner">
     <a href="${base}index.html" class="brand">
@@ -122,13 +140,29 @@ function header(base) {
     </a>
     <nav class="main-nav" id="main-nav">
       <a href="${base}index.html">Home</a>
+      <a href="${base}about.html">About</a>
       <details class="nav-dropdown">
         <summary>Services</summary>
         <div class="nav-dropdown-menu">
         ${serviceLinks}
         </div>
       </details>
-      <a href="${base}service-areas/index.html">Service Areas</a>
+      <details class="nav-dropdown nav-dropdown-mega">
+        <summary>Service Areas</summary>
+        <div class="nav-dropdown-menu mega-menu">
+          ${areaCols}
+          <div class="mega-col mega-all">
+            <a href="${base}service-areas/index.html" class="mega-see-all">See All Areas &rarr;</a>
+          </div>
+        </div>
+      </details>
+      <details class="nav-dropdown">
+        <summary>Resources</summary>
+        <div class="nav-dropdown-menu">
+        <a href="${base}blog/index.html">Blog</a>
+        <a href="${base}faq.html">FAQ</a>
+        </div>
+      </details>
       <a href="${base}index.html#calculator">Get a Quote</a>
       <a href="${base}index.html#contact">Contact</a>
     </nav>
@@ -421,6 +455,234 @@ function renderTownPage(town, index) {
   });
 }
 
+/* --------------------------------- About --------------------------------- */
+
+function renderAboutPage() {
+  const base = "";
+  const featuredTestimonials = TESTIMONIALS.slice(0, 2);
+
+  const main = `<main>
+  ${breadcrumb(base, [{ label: "Home", href: `${base}index.html` }, { label: "About" }])}
+
+  <section class="section service-hero">
+    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.brickHouseLawn)}" aria-hidden="true"></div>
+    <div class="container">
+      <div class="service-hero-icon">🌿</div>
+      <h1>About ${SITE_NAME}</h1>
+      <p class="section-sub">Owner-operated lawn care, based in Springfield, MO.</p>
+      <a href="${base}index.html#calculator" class="btn btn-primary btn-lg">Get an Instant Estimate</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <p class="service-intro">${SITE_NAME} is a locally owned lawn care business based in Springfield, MO, run by Jake and a small crew who show up on schedule and treat every yard like it's their own. What started as mowing routes around Springfield has grown into a full-service operation covering mowing, cleanup, fertilization, weed control, mulching, and aeration for homeowners and businesses within about 60 miles of the city.</p>
+
+      <h2>What We're About</h2>
+      <ul class="check-list">
+        <li>Integrity — we do what we say we're going to do, every visit</li>
+        <li>Clear communication — you'll always know when we're coming and what's included</li>
+        <li>Fair, straightforward pricing — no surprise add-ons after the fact</li>
+        <li>Quality you can see — clean lines, healthy grass, a yard that looks cared for</li>
+      </ul>
+
+      <div class="cta-banner">
+        <p>See what lawn care costs for your property.</p>
+        <a href="${base}index.html#calculator" class="btn btn-primary">Use the Project Calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials">
+    <div class="container">
+      <h2 class="section-title">In Our Customers' Words</h2>
+      <div class="testimonial-cards">
+        ${featuredTestimonials
+          .map(
+            (t) => `<div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>&ldquo;${t.quote}&rdquo;</p>
+          <span class="testimonial-name">&mdash; ${t.name}</span>
+        </div>`
+          )
+          .join("\n        ")}
+      </div>
+      <p class="gallery-cta">Read more on <a href="${FACEBOOK}" target="_blank" rel="noopener">Facebook</a>.</p>
+    </div>
+  </section>
+
+  <section class="section gallery">
+    <div class="container">
+      <h2 class="section-title">Recent Work</h2>
+      <div class="gallery-placeholder">
+        ${GALLERY_IMAGES.slice(0, 3)
+          .map((g) => `<div class="gallery-item"><img src="${g.src}" alt="${g.alt}" loading="lazy" /></div>`)
+          .join("\n        ")}
+      </div>
+    </div>
+  </section>
+
+  <section class="section area-teaser">
+    <div class="container">
+      <h2 class="section-title">Proudly Serving Springfield, MO &amp; Beyond</h2>
+      <p class="section-sub">We serve homeowners and businesses within about a 60-mile radius of Springfield, Missouri.</p>
+      <a href="${base}service-areas/index.html" class="btn btn-outline">See All Service Areas</a>
+    </div>
+  </section>
+</main>`;
+
+  return page({
+    base,
+    title: `About Us | ${SITE_NAME}`,
+    description: `${SITE_NAME} is a locally owned, owner-operated lawn care company based in Springfield, MO. Learn about our values and service area.`,
+    main,
+  });
+}
+
+/* ---------------------------------- Blog --------------------------------- */
+
+function formatDate(iso) {
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+}
+
+function renderBlogIndex() {
+  const base = "../";
+  const cards = posts
+    .slice()
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .map(
+      (p) => `<a class="blog-card" href="${p.slug}.html">
+          <div class="blog-card-img" style="background-image:url('${base}${PHOTOS[p.photo]}')"></div>
+          <div class="blog-card-body">
+            <span class="blog-date">${formatDate(p.date)}</span>
+            <h3>${p.title}</h3>
+            <p>${p.excerpt}</p>
+            <span class="card-link">Read more &rarr;</span>
+          </div>
+        </a>`
+    )
+    .join("\n        ");
+
+  const main = `<main>
+  ${breadcrumb(base, [{ label: "Home", href: `${base}index.html` }, { label: "Blog" }])}
+
+  <section class="section service-hero">
+    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.lawnWideTrees)}" aria-hidden="true"></div>
+    <div class="container">
+      <div class="service-hero-icon">📝</div>
+      <h1>Lawn Care Tips &amp; Guides</h1>
+      <p class="section-sub">Seasonal advice for Springfield, MO area lawns, straight from our crew.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="blog-cards">
+        ${cards}
+      </div>
+    </div>
+  </section>
+</main>`;
+
+  return page({
+    base,
+    title: `Lawn Care Tips & Guides | ${SITE_NAME}`,
+    description: `Seasonal lawn care tips and guides for the Springfield, MO area from ${SITE_NAME}.`,
+    main,
+  });
+}
+
+function renderBlogPost(post) {
+  const base = "../";
+  const bodyHtml = post.body.map((p) => `<p>${p}</p>`).join("\n        ");
+  const related = services.find((s) => s.slug === post.relatedService);
+
+  const main = `<main>
+  ${breadcrumb(base, [
+    { label: "Home", href: `${base}index.html` },
+    { label: "Blog", href: `${base}blog/index.html` },
+    { label: post.title },
+  ])}
+
+  <article class="section blog-post">
+    <div class="container narrow">
+      <span class="blog-date">${formatDate(post.date)}</span>
+      <h1>${post.title}</h1>
+      <div class="blog-post-img" style="background-image:url('${base}${PHOTOS[post.photo]}')"></div>
+      <div class="blog-post-body">
+        ${bodyHtml}
+      </div>
+
+      ${
+        related
+          ? `<div class="cta-banner">
+        <p>Want help with ${related.navLabel.toLowerCase()}?</p>
+        <a href="${base}services/${related.slug}.html" class="btn btn-primary">View This Service</a>
+      </div>`
+          : ""
+      }
+
+      <p class="gallery-cta"><a href="${base}blog/index.html">&larr; Back to all posts</a></p>
+    </div>
+  </article>
+</main>`;
+
+  return page({
+    base,
+    title: `${post.title} | ${SITE_NAME} Blog`,
+    description: post.excerpt,
+    main,
+  });
+}
+
+/* ---------------------------------- FAQ ---------------------------------- */
+
+function renderFAQPage() {
+  const base = "";
+  const items = faqs
+    .map(
+      (f) => `<details class="faq-item">
+          <summary>${f.q}</summary>
+          <p>${f.a}</p>
+        </details>`
+    )
+    .join("\n        ");
+
+  const main = `<main>
+  ${breadcrumb(base, [{ label: "Home", href: `${base}index.html` }, { label: "FAQ" }])}
+
+  <section class="section service-hero">
+    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.lawnStripes)}" aria-hidden="true"></div>
+    <div class="container">
+      <div class="service-hero-icon">❓</div>
+      <h1>Frequently Asked Questions</h1>
+      <p class="section-sub">Answers to the questions we hear most.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="faq-list">
+        ${items}
+      </div>
+
+      <div class="cta-banner">
+        <p>Still have a question?</p>
+        <a href="${base}index.html#contact" class="btn btn-primary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</main>`;
+
+  return page({
+    base,
+    title: `Frequently Asked Questions | ${SITE_NAME}`,
+    description: `Common questions about scheduling, pricing, service areas, and more, answered by ${SITE_NAME}.`,
+    main,
+  });
+}
+
 /* -------------------------------- Homepage ------------------------------- */
 
 function renderHomepage() {
@@ -456,11 +718,15 @@ function renderHomepage() {
   const main = `<main id="top">
 
   <section class="hero">
-    <div class="hero-bg" style="${heroBgStyle(base, PHOTOS.mowerLowAngle)}" aria-hidden="true"></div>
+    <div class="hero-bg" style="${heroBgStyle(base, PHOTOS.houseGardenLawn)}" aria-hidden="true"></div>
     <div class="container hero-inner">
       <img src="assets/logo.jpg" alt="${SITE_NAME}" class="hero-logo" />
       <h1>Sharp Lawns. <span>Honest Prices.</span></h1>
       <p class="hero-sub">Reliable mowing and lawn care for homes and businesses around Springfield, MO. Get an instant estimate below — no waiting on a callback.</p>
+      <div class="hero-mow-strip" aria-hidden="true">
+        <span class="mow-trail"></span>
+        <span class="mower-emoji">🚜</span>
+      </div>
       <div class="hero-actions">
         <a href="#calculator" class="btn btn-primary btn-lg">Calculate My Price</a>
         <a href="#contact" class="btn btn-outline btn-lg">Contact Us</a>
@@ -634,10 +900,14 @@ function write(relPath, contents) {
 }
 
 write("index.html", renderHomepage());
+write("about.html", renderAboutPage());
+write("faq.html", renderFAQPage());
+write("blog/index.html", renderBlogIndex());
+posts.forEach((p) => write(`blog/${p.slug}.html`, renderBlogPost(p)));
 
 services.forEach((s) => write(`services/${s.slug}.html`, renderServicePage(s)));
 
 write("service-areas/index.html", renderAreaHub());
 towns.forEach((t, i) => write(`service-areas/${t.slug}.html`, renderTownPage(t, i)));
 
-console.log(`\nGenerated ${2 + services.length + towns.length} pages.`);
+console.log(`\nGenerated ${5 + services.length + towns.length + posts.length} pages.`);
