@@ -37,19 +37,42 @@ const PHOTOS = {
   lawnWideTrees: "assets/gallery/lawn-wide-trees.jpg",
   brickHouseLawn: "assets/gallery/brick-house-lawn.jpg",
   houseGardenLawn: "assets/gallery/house-garden-lawn.jpg",
+  backyardPatioGarden: "assets/gallery/backyard-patio-garden.jpg",
+  slopedSideYard: "assets/gallery/sloped-side-yard.jpg",
+  manicuredTopiaryYard: "assets/gallery/manicured-topiary-yard.jpg",
+  courtyardTreesLawn: "assets/gallery/courtyard-trees-lawn.jpg",
+  luxuryPoolLawn: "assets/gallery/luxury-pool-lawn.jpg",
+  mowerCrewAction: "assets/gallery/mower-crew-action.jpg",
+  dewGrassMacro: "assets/gallery/dew-grass-macro.jpg",
+  modernHouseLawn: "assets/gallery/modern-house-lawn.jpg",
+  shadedTreeLawn: "assets/gallery/shaded-tree-lawn.jpg",
+  brickMansionFrontyard: "assets/gallery/brick-mansion-frontyard.jpg",
 };
 
 const GALLERY_IMAGES = [
-  { src: PHOTOS.mowerAction, alt: "Zero-turn mower cutting a lawn edge" },
+  { src: PHOTOS.mowerCrewAction, alt: "Crew member mowing a front lawn with a commercial zero-turn mower" },
+  { src: PHOTOS.backyardPatioGarden, alt: "Landscaped backyard patio with manicured lawn" },
+  { src: PHOTOS.brickMansionFrontyard, alt: "Manicured front lawn of a brick home" },
   { src: PHOTOS.mulchBed, alt: "Freshly mulched flower bed" },
-  { src: PHOTOS.brickHouseLawn, alt: "Manicured front lawn of a brick home" },
+  { src: PHOTOS.modernHouseLawn, alt: "Modern home with a freshly cut lawn" },
+  { src: PHOTOS.slopedSideYard, alt: "Freshly mowed sloped side yard" },
   { src: PHOTOS.lawnStripes, alt: "Freshly striped lawn close-up" },
-  { src: PHOTOS.backyardLandscaping, alt: "Landscaped backyard with manicured lawn" },
-  { src: PHOTOS.houseGardenLawn, alt: "Home with a freshly cut, striped lawn" },
+  { src: PHOTOS.courtyardTreesLawn, alt: "Shaded backyard lawn with mature trees" },
 ];
 
 // Rotated across town pages so nearby pages don't all look identical.
-const TOWN_HERO_PHOTOS = [PHOTOS.lawnWideTrees, PHOTOS.brickHouseLawn, PHOTOS.houseGardenLawn, PHOTOS.backyardLandscaping];
+const TOWN_HERO_PHOTOS = [
+  PHOTOS.lawnWideTrees,
+  PHOTOS.brickHouseLawn,
+  PHOTOS.houseGardenLawn,
+  PHOTOS.backyardLandscaping,
+  PHOTOS.backyardPatioGarden,
+  PHOTOS.slopedSideYard,
+  PHOTOS.courtyardTreesLawn,
+  PHOTOS.modernHouseLawn,
+  PHOTOS.brickMansionFrontyard,
+  PHOTOS.shadedTreeLawn,
+];
 
 // Real customer reviews, copied from the Lampson Lawn Service Facebook page.
 const TESTIMONIALS = [
@@ -80,9 +103,9 @@ const TESTIMONIALS = [
 ];
 
 const SERVICE_HERO_PHOTOS = {
-  "mowing-edging": PHOTOS.mowerAction,
+  "mowing-edging": PHOTOS.mowerCrewAction,
   "yard-cleanup": PHOTOS.trimming,
-  "fertilization-weed-control": PHOTOS.lawnStripes,
+  "fertilization-weed-control": PHOTOS.dewGrassMacro,
   "mulching-aeration": PHOTOS.mulchBed,
 };
 
@@ -336,7 +359,7 @@ function renderAreaHub() {
   ${breadcrumb(base, [{ label: "Home", href: `${base}index.html` }, { label: "Service Areas" }])}
 
   <section class="section service-hero">
-    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.lawnWideTrees)}" aria-hidden="true"></div>
+    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.brickMansionFrontyard)}" aria-hidden="true"></div>
     <div class="container">
       <div class="service-hero-icon">📍</div>
       <h1>Service Areas</h1>
@@ -568,7 +591,7 @@ function renderBlogIndex() {
   ${breadcrumb(base, [{ label: "Home", href: `${base}index.html` }, { label: "Blog" }])}
 
   <section class="section service-hero">
-    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.lawnWideTrees)}" aria-hidden="true"></div>
+    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.courtyardTreesLawn)}" aria-hidden="true"></div>
     <div class="container">
       <div class="service-hero-icon">📝</div>
       <h1>Lawn Care Tips &amp; Guides</h1>
@@ -653,7 +676,7 @@ function renderFAQPage() {
   ${breadcrumb(base, [{ label: "Home", href: `${base}index.html` }, { label: "FAQ" }])}
 
   <section class="section service-hero">
-    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.lawnStripes)}" aria-hidden="true"></div>
+    <div class="service-hero-bg" style="${serviceHeroBgStyle(base, PHOTOS.manicuredTopiaryYard)}" aria-hidden="true"></div>
     <div class="container">
       <div class="service-hero-icon">❓</div>
       <h1>Frequently Asked Questions</h1>
